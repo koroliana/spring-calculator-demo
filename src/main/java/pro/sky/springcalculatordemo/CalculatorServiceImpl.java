@@ -22,20 +22,31 @@ public class CalculatorServiceImpl implements CalculatorService {
 
     public String minus(String num1, String num2) {
         if (isNumeric(num1)&&isNumeric(num2)) {
-            int diff = Integer.parseInt(num1) - Integer.parseInt(num2);
+            double diff = Double.parseDouble(num1) - Double.parseDouble(num2);
             return num1 + " - " + num2 + " = " + diff;
         }
         else return "Передайте 2 числа";
     }
 
     public String multiply(String num1, String num2) {
-        int mult = Integer.parseInt(num1)*Integer.parseInt(num2);
-        return num1 + " * " + num2 + " = " + mult;
+        if (isNumeric(num1)&&isNumeric(num2)) {
+            double mult = Double.parseDouble(num1)*Double.parseDouble(num2);
+            return num1 + " * " + num2 + " = " + mult;
+        }
+        else return "Передайте 2 числа";
     }
 
     public String divide(String num1, String num2) {
-        double quotient = Integer.parseInt(num1)/Integer.parseInt(num2);
-        return num1 + " / " + num2 + " = " + quotient;
+        if (isNumeric(num1)&&isNumeric(num2)) {
+            double divider = Double.parseDouble(num2);
+            if (divider!=0){
+                double quotient = Integer.parseInt(num1)/divider;
+                return num1 + " / " + num2 + " = " + quotient;
+            }
+            else return "Делить на 0 нельзя!";
+
+        }
+        else return "Передайте 2 числа";
     }
 
     private boolean isNumeric(String str) {
