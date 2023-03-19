@@ -6,12 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CalculatorController {
-    private CalculatorServiceImpl calculatorService = new CalculatorServiceImpl();
-    /* public CalculatorController(CalculatorService calculatorService) {
+    private final CalculatorService calculatorService;
+    public CalculatorController(CalculatorService calculatorService) {
         this.calculatorService = calculatorService;
     }
-
-     */
 
     @GetMapping (path = "/calculator")
     public String greet() {
@@ -19,35 +17,34 @@ public class CalculatorController {
     }
 
     @GetMapping (path = "/calculator/plus")
-    public String summarise(@RequestParam("num1") String num1, @RequestParam("num2") String num2) {
+    public String summarise(@RequestParam(required = false) String num1, @RequestParam(required = false) String num2) {
+        if(num1==null || num2==null ) {
+            return "Для сложения необходимы 2 числа";
+        }
         return calculatorService.plus(num1,num2);
     }
 
- /*   @GetMapping (path = "/calculator/minus")
-    public String warning() {
-        return "Для вычитания необходимы 2 числа";
-    }
-
-  */
-
     @GetMapping (path = "/calculator/minus")
-    public String subtraction(@RequestParam String num1, @RequestParam String num2) {
-        /*
-        if(num1.equals(null) || num2.equals(null)) {
+    public String subtraction(@RequestParam(required = false) String num1, @RequestParam(required = false) String num2) {
+        if(num1==null || num2==null ) {
             return "Для вычитания необходимы 2 числа";
         }
-
-         */
         return calculatorService.minus(num1,num2);
     }
 
     @GetMapping (path = "/calculator/multiply")
-    public String multiply(@RequestParam String num1, @RequestParam String num2) {
+    public String multiply(@RequestParam(required = false) String num1, @RequestParam(required = false) String num2) {
+        if(num1==null || num2==null ) {
+            return "Для умножения необходимы 2 числа";
+        }
         return calculatorService.multiply(num1,num2);
     }
 
     @GetMapping (path = "/calculator/divide")
-    public String divide(@RequestParam String num1, @RequestParam String num2) {
+    public String divide(@RequestParam(required = false) String num1, @RequestParam(required = false) String num2) {
+        if(num1==null || num2==null ) {
+            return "Для деления необходимы 2 числа";
+        }
         return calculatorService.divide(num1,num2);
     }
 
