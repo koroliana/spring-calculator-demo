@@ -14,7 +14,7 @@ public class CalculatorServiceImpl implements CalculatorService {
     public String plus(String num1, String num2) {
         if (isNumeric(num1)&&isNumeric(num2)) {
             double sum = Double.parseDouble(num1)+Double.parseDouble(num2);
-            return num1 + " + " + num2 + " = " + sum;
+            return num1 + " + " + num2 + " = " + (int) sum;
         }
         else return "Калькулятор производит операцию сложения только с числами. Повторите попытку.";
 
@@ -23,7 +23,7 @@ public class CalculatorServiceImpl implements CalculatorService {
     public String minus(String num1, String num2) {
         if (isNumeric(num1)&&isNumeric(num2)) {
             double diff = Double.parseDouble(num1) - Double.parseDouble(num2);
-            return num1 + " - " + num2 + " = " + diff;
+            return num1 + " - " + num2 + " = " + (int) diff;
         }
         else return "Калькулятор производит операцию вычитания только с числами. Повторите попытку.";
     }
@@ -31,7 +31,7 @@ public class CalculatorServiceImpl implements CalculatorService {
     public String multiply(String num1, String num2) {
         if (isNumeric(num1)&&isNumeric(num2)) {
             double mult = Double.parseDouble(num1)*Double.parseDouble(num2);
-            return num1 + " * " + num2 + " = " + mult;
+            return num1 + " * " + num2 + " = " + (int) mult;
         }
         else return "Калькулятор производит операцию умножения только с числами. Повторите попытку.";
     }
@@ -41,7 +41,7 @@ public class CalculatorServiceImpl implements CalculatorService {
             double divider = Double.parseDouble(num2);
             if (divider!=0){
                 double quotient = Integer.parseInt(num1)/divider;
-                return num1 + " / " + num2 + " = " + quotient;
+                return num1 + " / " + num2 + " = " + (int) quotient;
             }
             else return "Делить на 0 нельзя!";
 
