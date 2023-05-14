@@ -5,4 +5,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(code = HttpStatus.BAD_REQUEST)
 public class DivisionByZeroException extends RuntimeException{
+    private final String message;
+
+    public DivisionByZeroException(String message)    {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 }

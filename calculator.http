@@ -12,3 +12,8 @@ GET http://localhost:8080/calculator/divide?num1=5&num2=0
 ###
 GET http://localhost:8080/calculator/plus?num1=
 ###
+GET http://localhost:8080/calculator/divide?num1=
+###
+GET http://localhost:8080/calculator/multiply
+###
+GET http://localhost:8080/calculator/minus?num1=5&num2=к
