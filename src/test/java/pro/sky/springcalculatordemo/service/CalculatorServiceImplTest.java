@@ -1,19 +1,25 @@
 package pro.sky.springcalculatordemo.service;
 
+
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pro.sky.springcalculatordemo.exceptions.DivisionByZeroException;
+import pro.sky.springcalculatordemo.exceptions.NotNumbersException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class CalculatorServiceImplTest {
     private final CalculatorService calculatorService = new CalculatorServiceImpl();
     private final String numberFive = "5";
-    private String numberNull;
-    private String stringFive;
-    private String stringNull;
+    private final String numberNull = "0";
+    private final String stringFive = "five";
+    private final String stringNull = null;
 
 
-
+/*
     @BeforeEach //Почему-то не срабатывает
     public void setUp(){
         //CalculatorService calculatorService = new CalculatorServiceImpl();
@@ -22,6 +28,8 @@ public class CalculatorServiceImplTest {
         String stringFive = "five";
         String stringNull = null;
     }
+
+ */
 
     @Test
     public void plusTest() {
@@ -73,6 +81,33 @@ public class CalculatorServiceImplTest {
         String actual2 = "-5 / 8 = -0.625";
         assertEquals(expected2,actual2);
 
+    }
+
+    @Test
+    public void divideNegativeTest() {
+        Assertions.assertThrows(DivisionByZeroException.class, () -> calculatorService.divide(numberFive,numberNull));
+        Assertions.assertThrows(DivisionByZeroException.class, () -> calculatorService.divide("-5","0"));
+
+        Assertions.assertThrows(NotNumbersException.class, () -> calculatorService.divide(numberFive,stringFive));
+        Assertions.assertThrows(NotNumbersException.class, () -> calculatorService.divide("-5","one"));
+    }
+
+    @Test
+    public void plusNegativeTest() {
+        Assertions.assertThrows(NotNumbersException.class, () -> calculatorService.plus(numberFive,stringFive));
+        Assertions.assertThrows(NotNumbersException.class, () -> calculatorService.plus("-5","one"));
+    }
+
+    @Test
+    public void minusNegativeTest() {
+        Assertions.assertThrows(NotNumbersException.class, () -> calculatorService.minus(numberFive,stringFive));
+        Assertions.assertThrows(NotNumbersException.class, () -> calculatorService.minus("-5","one"));
+    }
+
+    @Test
+    public void multiplyNegativeTest() {
+        Assertions.assertThrows(NotNumbersException.class, () -> calculatorService.multiply(numberFive,stringFive));
+        Assertions.assertThrows(NotNumbersException.class, () -> calculatorService.multiply("-5","one"));
     }
 
 
