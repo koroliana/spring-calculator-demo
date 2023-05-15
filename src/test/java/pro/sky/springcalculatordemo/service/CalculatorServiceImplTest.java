@@ -1,9 +1,6 @@
 package pro.sky.springcalculatordemo.service;
 
-
-
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pro.sky.springcalculatordemo.exceptions.DivisionByZeroException;
 import pro.sky.springcalculatordemo.exceptions.NotNumbersException;
@@ -16,7 +13,6 @@ public class CalculatorServiceImplTest {
     private final String numberFive = "5";
     private final String numberNull = "0";
     private final String stringFive = "five";
-    private final String stringNull = null;
 
 
 /*
