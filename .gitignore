@@ -2,7 +2,6 @@ HELP.md
 /mvnw
 .mvn
 /mvnw.cmd
-test/
 target/
 !**/src/main/**/target/
 
